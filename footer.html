@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Internet Site - Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== INTERNET SITE FOOTER - HOVER COLOR AS BG ===== */
+        .internet-footer {
+            background: linear-gradient(135deg, #0066cc, #004099);
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 50px 2rem 20px;
+        }
+
+        /* Main grid */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* Company info */
+        .footer-about {
+            max-width: 350px;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo a {
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        /* INCREASED LOGO SIZE - Desktop */
+        .footer-logo img {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo img:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        /* Social icons */
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 16px;
+        }
+
+        .footer-social a:hover {
+            background: white;
+            color: #0066cc;
+            transform: translateY(-3px);
+            border-color: white;
+        }
+
+        /* Footer headings */
+        .internet-footer h3 {
+            color: white;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 22px;
+            letter-spacing: 0.5px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Quick links */
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            font-size: 10px;
+            color: white;
+        }
+
+        /* Contact column */
+        .footer-contact .contact-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .footer-contact .contact-item i {
+            color: white;
+            font-size: 14px;
+            margin-top: 3px;
+            min-width: 20px;
+        }
+
+        .footer-contact .contact-item p,
+        .footer-contact .contact-item a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            line-height: 1.6;
+            text-decoration: none;
+        }
+
+        .footer-contact .contact-item a:hover {
+            color: white;
+        }
+
+        /* Trust Badge */
+        .trust-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .trust-badge i {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .trust-badge p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .trust-badge .badge-text {
+            color: white;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        /* Footer bottom */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 25px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-legal a:hover {
+            color: white;
+        }
+
+        /* INCREASED LOGO SIZE - Mobile */
+        @media (max-width: 768px) {
+            .footer-container {
+                padding: 40px 1.5rem 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .footer-about {
+                grid-column: span 1;
+                max-width: 100%;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-legal {
+                justify-content: center;
+            }
+            /* Increased logo size on mobile */
+            .footer-logo img {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                padding: 30px 1rem 20px;
+            }
+            /* Even larger logo on small mobile */
+            .footer-logo img {
+                width: 120px;
+                height: 120px;
+            }
+            .internet-footer h3 {
+                font-size: 16px;
+            }
+        }
+
+        /* Tablet view */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .footer-logo img {
+                width: 130px;
+                height: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== INTERNET SITE FOOTER - LARGER LOGO + SOCIAL LINKS TO 404.HTML ===== -->
+    <footer class="internet-footer">
+        <div class="footer-container">
+
+            <!-- Main grid -->
+            <div class="footer-grid">
+                
+                <!-- Column 1: Logo + About + Social -->
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <a href="index.html">
+                            <img src="Stackly.webp" alt="Stackly Internet" onerror="this.onerror=null; this.src='https://placehold.co/140x140/ffffff/0066cc?text=S';">
+                        </a>
+                    </div>
+                    <p>Delivering high-performance web hosting, scalable cloud infrastructure, and enterprise cybersecurity solutions for businesses worldwide.</p>
+                    <div class="footer-social">
+                        <a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="404.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="404.html" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="404.html" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links (matches header nav) -->
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> HOME</a></li>
+                        <li><a href="web-hosting.html"><i class="fas fa-chevron-right"></i> WEB HOSTING</a></li>
+                        <li><a href="cloud.html"><i class="fas fa-chevron-right"></i> CLOUD</a></li>
+                        <li><a href="cyber-security.html"><i class="fas fa-chevron-right"></i> CYBERSECURITY</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> CONTACT</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Internet Services -->
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="404.html"><i class="fas fa-chevron-right"></i> Shared Hosting</a></li>
+                        <li><a href="404.html"><i class="fas fa-chevron-right"></i> VPS Servers</a></li>
+                        <li><a href="404.html"><i class="fas fa-chevron-right"></i> Dedicated Servers</a></li>
+                        <li><a href="404.html"><i class="fas fa-chevron-right"></i> Cloud Storage</a></li>
+                        <li><a href="404.html"><i class="fas fa-chevron-right"></i> SSL Certificates</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact & Trust Badge -->
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="404.html">support@stackly.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="404.html">+1 (888) 555-1234</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <p>24/7 Technical Support</p>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>99.9% Uptime Guarantee</p>
+                        <span class="badge-text">24/7 Expert Support</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer bottom -->
+            <div class="footer-bottom">
+                <p>© 2026 Stackly Internet Site. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="404.html">Privacy Policy</a>
+                    <a href="404.html">Terms of Service</a>
+                    <a href="404.html">Cookie Policy</a>
+                    <a href="404.html">GDPR Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Handle logo image error
+            const logoImg = document.querySelector('.footer-logo img');
+            if (logoImg) {
+                logoImg.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const parent = this.parentElement;
+                    const fallbackIcon = document.createElement('i');
+                    fallbackIcon.className = 'fas fa-cloud-upload-alt';
+                    fallbackIcon.style.fontSize = '4rem';
+                    fallbackIcon.style.color = 'white';
+                    parent.appendChild(fallbackIcon);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

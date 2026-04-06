@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Cloud Solutions · Internet Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+            background: #f0f4f8;
+            color: #1a2c3e;
+            overflow-x: hidden;
+        }
+
+        main {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* ===== BUTTONS WITH VISIBLE TEXT ON HOVER ===== */
+        .btn-primary, .btn-outline, .btn-ghost, .btn-dark, .btn-light, .btn-round {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0066cc, #004099);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,102,204,0.25);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,102,204,0.35); background: linear-gradient(135deg, #0080ff, #0055cc); color: white !important; }
+        .btn-outline {
+            background: transparent;
+            color: #0066cc;
+            border: 1.5px solid #0066cc;
+            padding: 12px 28px;
+            border-radius: 40px;
+        }
+        .btn-outline:hover { background: #0066cc; color: white !important; transform: translateY(-2px);}
+        .btn-ghost {
+            background: rgba(0,102,204,0.1);
+            color: #0066cc;
+            padding: 10px 24px;
+            border-radius: 30px;
+        }
+        .btn-ghost:hover { background: #0066cc; color: white !important; transform: translateY(-2px);}
+        .btn-dark {
+            background: #1a2c3e;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 12px;
+        }
+        .btn-dark:hover { background: #0066cc; transform: translateY(-2px); color: white !important;}
+        .btn-light {
+            background: white;
+            color: #0066cc;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+        .btn-light:hover { background: #e8edf3; color: #0066cc !important; transform: translateY(-2px);}
+        .btn-round {
+            background: white;
+            color: #0066cc;
+            padding: 14px 32px;
+            border-radius: 60px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+        }
+        .btn-round:hover { background: #0066cc; color: white !important; transform: scale(1.02);}
+
+        /* ===== SECTION HEADINGS ===== */
+        .section-heading {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            letter-spacing: -0.3px;
+            color: #1a2c3e;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-animate-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-animate-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-animate.visible, .scroll-animate-right.visible, .scroll-animate-up.visible {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+
+        /* ===== GRID SYSTEMS ===== */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        /* ===== SECTION 1: HERO ===== */
+        .hero-cloud {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(rgba(10,37,64,0.85), rgba(13,59,94,0.9)), url('is15.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0,102,204,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== SECTION 2: STATS COUNTERS ===== */
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            text-align: center;
+        }
+        .stat-box {
+            flex: 1;
+            min-width: 150px;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+        }
+        .stat-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(0,102,204,0.15);
+        }
+        .stat-number-lg {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0066cc;
+        }
+
+        /* ===== SECTION 3: SERVICE TABS ===== */
+        .tabs-container {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .tabs-container:hover {
+            box-shadow: 0 25px 40px -12px rgba(0,102,204,0.1);
+        }
+        .tabs-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 2px solid #eef2f6;
+            margin-bottom: 2rem;
+        }
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 40px;
+        }
+        .tab-btn:hover {
+            background: rgba(0,102,204,0.1);
+        }
+        .tab-btn.active {
+            background: #0066cc;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== SECTION 4: PRICING TABLE - FULLY RESPONSIVE ===== */
+        .pricing-comparison {
+            background: white;
+            border-radius: 32px;
+            overflow-x: auto;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+        }
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        .pricing-table th,
+        .pricing-table td {
+            padding: 1rem 1.2rem;
+            text-align: center;
+            border-bottom: 1px solid #eef2f6;
+        }
+        .pricing-table th {
+            background: #f0f4f8;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+        .pricing-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            background: #fafcfd;
+        }
+        .pricing-table .highlight {
+            background: linear-gradient(135deg, #0066cc, #004099);
+            color: white;
+        }
+        .pricing-table .highlight td {
+            background: linear-gradient(135deg, #0066cc, #004099);
+            color: white;
+        }
+        .check-icon {
+            color: #0066cc;
+            font-size: 1.2rem;
+        }
+        .highlight .check-icon {
+            color: white;
+        }
+
+        /* ===== SECTION 5: FEATURE SHOWCASE ===== */
+        .feature-showcase {
+            background: linear-gradient(135deg, #0a192f, #0d3b5e);
+            border-radius: 48px;
+            padding: 3rem;
+            color: white;
+            transition: all 0.4s;
+        }
+        .feature-showcase:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 50px -12px rgba(0,0,0,0.3);
+        }
+        .feature-icon-large {
+            font-size: 3rem;
+            color: #FFB800;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== SECTION 6: CUSTOMER LOGOS ===== */
+        .logo-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            opacity: 0.7;
+        }
+        .logo-cloud span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4a627a;
+            transition: all 0.3s;
+        }
+        .logo-cloud span:hover {
+            color: #0066cc;
+            transform: translateY(-3px);
+        }
+
+        /* ===== SECTION 7: TESTIMONIALS ===== */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(0,102,204,0.15);
+        }
+
+        /* ===== SECTION 8: COMPARISON TABLE ===== */
+        .comparison-wrapper {
+            overflow-x: auto;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            min-width: 500px;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eef2f6;
+        }
+        .comparison-table th {
+            background: #f0f4f8;
+            font-weight: 700;
+        }
+
+        /* ===== SECTION 9: CTA ===== */
+        .cta-bg {
+            background: linear-gradient(rgba(0,40,70,0.85), rgba(0,20,40,0.9)), url('is14.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+            color: white;
+        }
+
+        /* ===== SECTION 10: INTEGRATIONS ===== */
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .integration-item {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+        }
+        .integration-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(0,102,204,0.15);
+        }
+        .integration-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .integration-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonial-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 900px) {
+            .grid-3, .grid-2 { grid-template-columns: 1fr; }
+            .container { padding: 3rem 1.5rem; }
+            .section-heading { font-size: 1.8rem; }
+            .stats-row { flex-direction: column; }
+            .tabs-header { flex-direction: column; align-items: center; }
+        }
+        @media (max-width: 550px) {
+            .container { padding: 2rem 1rem; }
+            .section-heading { font-size: 1.5rem; }
+            .integration-grid { grid-template-columns: 1fr; }
+            .feature-showcase { padding: 2rem; }
+            .pricing-table th, .pricing-table td { padding: 0.8rem; font-size: 0.8rem; }
+        }
+
+        /* Back to Top Button CSS */
+.back-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #0066cc;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 999;
+    border: 2px solid #0066cc;
+    text-decoration: none;
+}
+.back-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.back-top:hover {
+    background: #004099;
+    transform: translateY(-5px) scale(1.1);
+}
+    </style>
+</head>
+<body>
+<main>
+
+<!-- HEADER PLACEHOLDER -->
+<div id="header-placeholder"></div>
+
+    <!-- SECTION 1: HERO WITH BACKGROUND IMAGE -->
+    <div class="hero-cloud">
+        <div class="container" style="width: 100%;">
+            <div class="scroll-animate">
+                <span class="hero-badge"><i class="fas fa-cloud"></i> Cloud Infrastructure</span>
+                <h1 style="font-size: 3.5rem; font-weight: 800; color: white;">Scale Your Business<br>with Cloud Power</h1>
+                <p style="font-size: 1.2rem; margin: 1.5rem 0; color: #ccd6f6;">Elastic infrastructure, global reach, and enterprise-grade security.</p>
+                <a href="404.html" class="btn-round" style="background:#0066cc ; color:white;">Start Free Trial →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: STATS COUNTERS -->
+    <div class="container">
+        <div class="stats-row">
+            <div class="stat-box scroll-animate-up"><div class="stat-number-lg" id="stat1">0</div><p>Active Cloud Nodes</p></div>
+            <div class="stat-box scroll-animate-up"><div class="stat-number-lg" id="stat2">0</div><p>Global Data Centers</p></div>
+            <div class="stat-box scroll-animate-up"><div class="stat-number-lg" id="stat3">0</div><p>PB Cloud Storage</p></div>
+            <div class="stat-box scroll-animate-up"><div class="stat-number-lg" id="stat4">0</div><p>Cloud Customers</p></div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: SERVICE TABS -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate-up">Cloud Computing Services</h2>
+        <div class="tabs-container scroll-animate-up">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="compute">Cloud Compute</button>
+                <button class="tab-btn" data-tab="storage">Cloud Storage</button>
+                <button class="tab-btn" data-tab="database">Cloud Database</button>
+                <button class="tab-btn" data-tab="networking">Cloud Network</button>
+            </div>
+            <div id="compute" class="tab-content active">
+                <div class="grid-2">
+                    <div class="scroll-animate"><img src="is13.webp" alt="Cloud Compute" style="width:100%; border-radius: 24px;"></div>
+                    <div class="scroll-animate-right"><h3>Elastic Cloud Compute</h3><p>Scalable virtual machines with pay-as-you-go pricing. Deploy in seconds across global regions.</p><a href="404.html" class="btn-primary" style="margin-top: 1rem;">Explore Cloud Compute →</a></div>
+                </div>
+            </div>
+            <div id="storage" class="tab-content">
+                <div class="grid-2"><div class="scroll-animate"><img src="is12.webp" alt="Cloud Storage" style="width:100%; border-radius: 24px;"></div><div class="scroll-animate-right"><h3>Object Cloud Storage</h3><p>Secure, durable, and scalable storage for any data type. 11x9 durability guaranteed.</p><a href="404.html" class="btn-primary">Explore Cloud Storage →</a></div></div>
+            </div>
+            <div id="database" class="tab-content">
+                <div class="grid-2"><div class="scroll-animate"><img src="is11.webp" alt="Cloud Database" style="width:100%; border-radius: 24px;"></div><div class="scroll-animate-right"><h3>Managed Cloud Databases</h3><p>Fully managed MySQL, PostgreSQL, MongoDB, and Redis with automated backups.</p><a href="404.html" class="btn-primary">Explore Cloud Database →</a></div></div>
+            </div>
+            <div id="networking" class="tab-content">
+                <div class="grid-2"><div class="scroll-animate"><img src="is10.webp" alt="Cloud Network" style="width:100%; border-radius: 24px;"></div><div class="scroll-animate-right"><h3>Global Cloud Network</h3><p>Private networking, cloud load balancers, and global CDN with 50+ edge locations.</p><a href="404.html" class="btn-primary">Explore Cloud Network →</a></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: PRICING PLANS - FULLY RESPONSIVE TABLE -->
+    <div style="background: linear-gradient(120deg, #eef2ff, #ffffff); padding: 5rem 2rem;">
+        <div style="max-width: 1280px; margin: 0 auto;">
+            <h2 class="section-heading scroll-animate-up">Transparent Cloud Pricing</h2>
+            <div class="pricing-comparison scroll-animate-up">
+                <table class="pricing-table">
+                    <thead>
+                        <tr><th>Cloud Features</th><th>Developer</th><th class="highlight">Business</th><th>Enterprise</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Monthly Cloud Price</td><td>$29</td><td class="highlight">$99</td><td>Custom</td></tr>
+                        <tr><td>Cloud vCPUs</td><td>2</td><td class="highlight">8</td><td>Custom</td></tr>
+                        <tr><td>Cloud RAM</td><td>4GB</td><td class="highlight">16GB</td><td>Custom</td></tr>
+                        <tr><td>Cloud Storage</td><td>50GB SSD</td><td class="highlight">200GB SSD</td><td>Unlimited</td></tr>
+                        <tr><td>Cloud Data Transfer</td><td>100GB</td><td class="highlight">1TB</td><td>Unlimited</td></tr>
+                        <tr><td>24/7 Cloud Support</td><td><i class="fas fa-check check-icon"></i></td><td class="highlight"><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="404.html" class="btn-primary">Compare All Cloud Plans →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: FEATURE SHOWCASE -->
+    <div class="container">
+        <div class="feature-showcase scroll-animate-up">
+            <div class="grid-2">
+                <div class="scroll-animate"><i class="fas fa-shield-alt feature-icon-large"></i><h3>Enterprise Cloud Security</h3><p>End-to-end encryption, DDoS protection, and compliance ready (SOC2, ISO 27001, GDPR, HIPAA).</p><a href="404.html" class="btn-light" style="margin-top: 1rem; display: inline-block;">Learn Cloud Security →</a></div>
+                <div class="scroll-animate-right"><img src="is9.webp" alt="Cloud Security" style="width:100%; border-radius: 24px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 6: CUSTOMER LOGOS -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate-up">Trusted by Cloud Industry Leaders</h2>
+        <div class="logo-cloud">
+            <span class="scroll-animate"><i class="fab fa-google"></i> Google Cloud</span>
+            <span class="scroll-animate-up"><i class="fab fa-microsoft"></i> Microsoft Azure</span>
+            <span class="scroll-animate-up"><i class="fab fa-amazon"></i> AWS</span>
+            <span class="scroll-animate-right"><i class="fab fa-spotify"></i> Spotify</span>
+            <span class="scroll-animate-right"><i class="fab fa-netflix"></i> Netflix</span>
+        </div>
+    </div>
+
+    <!-- SECTION 7: TESTIMONIALS -->
+    <div style="background: #f0f4f8; padding: 5rem 2rem;">
+        <div style="max-width: 1280px; margin: 0 auto;">
+            <h2 class="section-heading scroll-animate-up">What Our Cloud Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card scroll-animate"><i class="fas fa-quote-left" style="color:#0066cc; font-size: 2rem;"></i><p style="margin: 1rem 0;">"Our cloud infrastructure scaled from 10 to 10,000 users seamlessly. Best cloud provider!"</p><p><strong>— TechFlow CEO</strong></p><img src="is8.webp" style="width: 50px; height: 50px; border-radius: 50%; margin-top: 1rem;"></div>
+                <div class="testimonial-card scroll-animate-right"><i class="fas fa-quote-left" style="color:#0066cc; font-size: 2rem;"></i><p style="margin: 1rem 0;">"99.99% cloud uptime and incredible support team. Highly recommended for cloud hosting!"</p><p><strong>— DataCore CTO</strong></p><img src="is7.webp" style="width: 50px; height: 50px; border-radius: 50%; margin-top: 1rem;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 8: CLOUD COMPARISON TABLE -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate-up">Compare Cloud Features</h2>
+        <div class="comparison-wrapper scroll-animate-up">
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Cloud Feature</th><th>Developer</th><th>Business</th><th>Enterprise</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cloud Auto-scaling</td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                    <tr><td>Cloud Load Balancer</td><td><i class="fas fa-times" style="color:#999;"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                    <tr><td>Cloud Dedicated Support</td><td><i class="fas fa-times" style="color:#999;"></i></td><td><i class="fas fa-check check-icon"></i></td><td><i class="fas fa-check check-icon"></i></td></tr>
+                    <tr><td>Cloud SLA Guarantee</td><td>99.9%</td><td>99.99%</td><td>99.999%</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- SECTION 9: CTA WITH BACKGROUND IMAGE - FIXED BUTTON -->
+    <div class="cta-bg" style="padding: 5rem 2rem;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 class="section-heading" style="color:white;">Ready to Migrate to the Cloud?</h2>
+            <p>Get started today with $500 cloud credits for new customers.</p>
+            <a href="404.html" class="btn-round" style="background:#0066cc; color: white; margin-top: 2rem; display: inline-block;">Claim Cloud Credits →</a>
+        </div>
+    </div>
+
+    <!-- SECTION 10: SEAMLESS CLOUD INTEGRATIONS -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate-up">Seamless Cloud Integrations</h2>
+        <div class="integration-grid">
+            <div class="integration-item scroll-animate"><img src="is6.webp" alt="Docker"><h3>Docker Cloud</h3><p>Cloud container orchestration</p><a href="404.html" class="btn-ghost" style="margin-top: 0.5rem;">Learn Cloud Integration</a></div>
+            <div class="integration-item scroll-animate-up"><img src="is5.webp" alt="Kubernetes"><h3>K8s Cloud</h3><p>Managed cloud K8s clusters</p><a href="404.html" class="btn-ghost">Learn Cloud Integration</a></div>
+            <div class="integration-item scroll-animate-up"><img src="is4.webp" alt="GitHub"><h3>GitHub Cloud</h3><p>Cloud CI/CD pipelines</p><a href="404.html" class="btn-ghost">Learn Cloud Integration</a></div>
+            <div class="integration-item scroll-animate-right"><img src="is3.webp" alt="Prometheus"><h3>Prometheus Cloud</h3><p>Cloud monitoring & alerts</p><a href="404.html" class="btn-ghost">Learn Cloud Integration</a></div>
+        </div>
+    </div>
+
+</main>
+
+<!-- Back to Top Button HTML -->
+<a href="#" class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></a>
+
+<!-- FOOTER PLACEHOLDER -->
+<div id="footer-placeholder"></div>
+
+<script>
+
+    // ===== HEADER & FOOTER LOADER =====
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        function setBodyPadding() {
+            const header = document.querySelector('.internet-header, header');
+            if (header) {
+                const headerHeight = header.offsetHeight;
+                document.body.style.paddingTop = headerHeight + 'px';
+            } else {
+                document.body.style.paddingTop = '0px';
+            }
+        }
+
+        // Load Header
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Header file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setBodyPadding();
+                initHamburgerMenu();
+                initScrollEffect();
+                
+                window.addEventListener('resize', function() {
+                    setBodyPadding();
+                });
+            })
+            .catch(error => {
+                console.warn('Header could not be loaded:', error);
+                document.getElementById('header-placeholder').innerHTML = 
+                    '<div style="background:#ffffff; color:#1a2c3e; padding:1rem; text-align:center; position:fixed; top:0; width:100%; z-index:10000; box-shadow:0 2px 10px rgba(0,0,0,0.1);">⚠️ Header Not Found - Check header.html file</div>';
+                setBodyPadding();
+            });
+
+        // Load Footer
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Footer file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.warn('Footer could not be loaded:', error);
+                document.getElementById('footer-placeholder').innerHTML = 
+                    '<div style="background:#0a192f; color:#ccd6f6; padding:2rem; text-align:center;">⚠️ Footer Not Found - Check footer.html file</div>';
+            });
+
+        function initHamburgerMenu() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const fullscreenMenu = document.getElementById('fullscreenMenu');
+            const closeBtn = document.getElementById('closeMenuBtn');
+            
+            if (!hamburger || !fullscreenMenu) return;
+            
+            function openMenu() {
+                fullscreenMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeMenu() {
+                fullscreenMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                openMenu();
+            });
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    closeMenu();
+                });
+            }
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && fullscreenMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+            
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-actions a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMenu();
+                });
+            });
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 1000 && fullscreenMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        }
+        
+        function initScrollEffect() {
+            const header = document.querySelector('.internet-header');
+            if (!header) return;
+            
+            function handleScroll() {
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
+        }
+    });
+
+    //==============================
+    // Intersection Observer for scroll animations
+    const animatedElements = document.querySelectorAll('.scroll-animate, .scroll-animate-right, .scroll-animate-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Counter animation for cloud stats
+    function animateCounter(elementId, target, suffix = '') {
+        let current = 0;
+        const element = document.getElementById(elementId);
+        if (!element) return;
+        const interval = setInterval(() => {
+            current += Math.ceil(target / 50);
+            if (current >= target) {
+                current = target;
+                clearInterval(interval);
+            }
+            element.innerText = current.toLocaleString() + suffix;
+        }, 30);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter('stat1', 25000, '+');
+                animateCounter('stat2', 35, '+');
+                animateCounter('stat3', 800, '+');
+                animateCounter('stat4', 75000, '+');
+                statsObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+    const statsContainer = document.querySelector('.stats-row');
+    if (statsContainer) statsObserver.observe(statsContainer);
+
+    // Tab functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            tabContents.forEach(content => content.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // Back to Top Button JavaScript
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backTop.classList.add('show');
+    } else {
+        backTop.classList.remove('show');
+    }
+});
+backTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+</script>
+</body>
+</html>

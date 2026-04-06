@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Internet Site - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+            background: #f0f4f8;
+            color: #1a2c3e;
+            overflow-x: hidden;
+        }
+
+        main {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary, .btn-outline, .btn-ghost, .btn-dark, .btn-light, .btn-round {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0066cc, #004099);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,102,204,0.25);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,102,204,0.35); background: linear-gradient(135deg, #0080ff, #0055cc);}
+        .btn-outline {
+            background: transparent;
+            color: #0066cc;
+            border: 1.5px solid #0066cc;
+            padding: 12px 28px;
+            border-radius: 40px;
+        }
+        .btn-outline:hover { background: #0066cc; color: white; transform: translateY(-2px);}
+        .btn-ghost {
+            background: rgba(0,102,204,0.1);
+            color: #0066cc;
+            padding: 10px 24px;
+            border-radius: 30px;
+        }
+        .btn-ghost:hover { background: #0066cc; color: white; transform: translateY(-2px);}
+        .btn-dark {
+            background: #1a2c3e;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 12px;
+        }
+        .btn-dark:hover { background: #0066cc; transform: translateY(-2px);}
+        .btn-light {
+            background: white;
+            color: #0066cc;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+        .btn-light:hover { background: #e8edf3; transform: translateY(-2px);}
+        .btn-round {
+            background: white;
+            color: #0066cc;
+            padding: 14px 32px;
+            border-radius: 60px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+        }
+        .btn-round:hover { background: #0066cc; color: white; transform: scale(1.02);}
+
+        /* ===== SECTION HEADINGS ===== */
+        .section-heading {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            letter-spacing: -0.3px;
+            color: #1a2c3e;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-animate-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-animate-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .scroll-animate.visible, .scroll-animate-right.visible, .scroll-animate-up.visible {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+
+        /* ===== GRID SYSTEMS ===== */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            align-items: center;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* Card styles */
+        .service-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(0,102,204,0.15);
+        }
+        .service-card i {
+            font-size: 2.2rem;
+            background: rgba(0,102,204,0.08);
+            padding: 12px;
+            border-radius: 20px;
+            color: #0066cc;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        .service-card h3 {
+            margin: 1rem 0 0.5rem;
+            font-size: 1.4rem;
+        }
+        .service-card p {
+            color: #4a627a;
+            line-height: 1.5;
+        }
+        .service-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery images */
+        .gallery-item {
+            background: white;
+            padding: 12px;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+        .gallery-item p {
+            margin-top: 10px;
+            font-weight: 600;
+            text-align: center;
+            color: #1a2c3e;
+        }
+
+        /* Feature strip */
+        .feature-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #1a2c3e;
+        }
+        .feature-item i {
+            color: #0066cc;
+            font-size: 1.2rem;
+        }
+
+        /* Hero section */
+        .hero-section {
+            position: relative;
+            min-height: 90vh;
+            background: #0a2540;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-left {
+            flex: 1.2;
+            color: white;
+        }
+        .hero-left h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        .hero-left p {
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            opacity: 0.9;
+        }
+        .hero-right {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 2rem;
+        }
+        .hero-right-inner {
+            background: white;
+            border-radius: 32px;
+            padding: 1.8rem;
+        }
+        .hero-right-inner i {
+            font-size: 2rem;
+            color: #0066cc;
+        }
+        .hero-right-inner p {
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        /* Marquee */
+        .marquee {
+            background: white;
+            padding: 2rem 0;
+            border-top: 1px solid #eef2f6;
+            border-bottom: 1px solid #eef2f6;
+            overflow: hidden;
+        }
+        .marquee-track {
+            display: flex;
+            gap: 4rem;
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+            width: max-content;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Two column section */
+        .two-column-bg {
+            background: linear-gradient(rgba(0,40,70,0.7), rgba(0,20,40,0.8)), url('is1.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            padding: 5rem 2rem;
+        }
+        .two-column-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .two-column-left {
+            color: white;
+        }
+        .two-column-left i {
+            font-size: 3rem;
+            color: #0066cc;
+            opacity: 0.7;
+        }
+        .two-column-left .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+        .two-column-right {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 32px;
+            padding: 2rem;
+        }
+        .two-column-right-inner {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+        }
+
+        /* Zigzag section */
+        .zigzag-bg {
+            background: url('is2.webp') center/cover fixed;
+            padding: 5rem 2rem;
+        }
+        .zigzag-wrapper {
+            background: rgba(255,255,255,0.95);
+            border-radius: 48px;
+            padding: 3rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .zigzag-icon {
+            font-size: 2.5rem;
+            color: #0066cc;
+        }
+        .zigzag-item {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* Video spotlight */
+        .video-spotlight {
+            background: #0f172a;
+            margin: 0;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        .video-spotlight video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.15;
+        }
+        .video-spotlight-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: white;
+        }
+
+        /* Pricing cards */
+        .pricing-card-startup {
+            text-align: center;
+        }
+        .pricing-card-business {
+            background: linear-gradient(135deg, #0066cc, #004099);
+            color: white;
+            text-align: center;
+        }
+        .pricing-card-business p,
+        .pricing-card-business div {
+            color: white;
+        }
+        .pricing-card-business hr {
+            border-color: rgba(255,255,255,0.3);
+        }
+        .pricing-card-enterprise {
+            text-align: center;
+        }
+
+        /* Testimonials section */
+        .testimonials-section {
+            background: #0a192f;
+            padding: 5rem 2rem;
+        }
+        .testimonials-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .testimonial-highlight {
+            background: linear-gradient(135deg, #0066cc, #004099);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            transform: translateY(-10px);
+        }
+        .stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .stars i {
+            color: #FFB800;
+            font-size: 0.9rem;
+        }
+        .testimonial-text {
+            color: #ccd6f6;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .avatar {
+            width: 45px;
+            height: 45px;
+            background: #0066cc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .avatar i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        .avatar-white {
+            background: white;
+        }
+        .avatar-white i {
+            color: #0066cc;
+        }
+        .author-name {
+            color: white;
+            font-weight: 700;
+        }
+        .author-title {
+            color: #8b9bb0;
+            font-size: 0.8rem;
+        }
+        .testimonial-btn {
+            margin-top: 1.5rem;
+            width: 100%;
+            justify-content: center;
+        }
+        .btn-white-outline {
+            border-color: rgba(255,255,255,0.3);
+            color: white;
+        }
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: rgba(0,102,204,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .icon-box i {
+            color: #0066cc;
+            font-size: 1.5rem;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            background: #0a192f;
+            padding: 5rem 2rem;
+            color: white;
+        }
+        .newsletter-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .newsletter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        .newsletter-input {
+            padding: 12px 20px;
+            border-radius: 60px;
+            border: none;
+            width: 280px;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(rgba(0,40,70,0.9), rgba(0,20,40,0.95)), url('is3.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        .final-cta-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .final-cta p {
+            color: #ccd6f6;
+            margin-bottom: 2rem;
+        }
+        .btn-transparent {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        .btn-transparent:hover {
+            background: white;
+            color: #0066cc;
+        }
+
+        /* Details / FAQ */
+        details summary::-webkit-details-marker { color: #0066cc; }
+        details summary { list-style: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        details summary::after { content: "▼"; font-size: 0.8rem; color: #0066cc; }
+        details[open] summary::after { content: "▲"; }
+        details {
+            background: white;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats */
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #0066cc;
+            display: inline-block;
+        }
+        .stat-suffix {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0066cc;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .grid-3, .stats-grid, .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 3rem 1.5rem;
+            }
+            .section-heading {
+                font-size: 1.8rem;
+            }
+            .hero-left h1 {
+                font-size: 2.5rem;
+            }
+            .testimonial-highlight {
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 550px) {
+            .grid-3, .stats-grid, .gallery-grid, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 2rem 1rem;
+            }
+            .feature-strip {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .section-heading {
+                font-size: 1.5rem;
+            }
+            .hero-left h1 {
+                font-size: 1.8rem;
+            }
+            .stat-number { font-size: 2rem; }
+            .stat-suffix { font-size: 1.3rem; }
+        }
+
+        /* Back to Top Button CSS */
+.back-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #0066cc;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 999;
+    border: 2px solid #0066cc;
+    text-decoration: none;
+}
+.back-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.back-top:hover {
+    background: #004099;
+    transform: translateY(-5px) scale(1.1);
+}
+    </style>
+</head>
+<body>
+<main>
+
+<!-- HEADER PLACEHOLDER -->
+<div id="header-placeholder"></div>
+
+    <!-- 1. HERO SECTION with video bg -->
+    <div class="hero-section">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="isv2.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <div class="hero-left">
+                <h1>Edge Internet<br>Infrastructure</h1>
+                <p>Global network, ultra-low latency, and AI‑powered security.</p>
+                <a href="404.html" class="btn-round">Launch Platform →</a>
+            </div>
+            <div class="hero-right">
+                <div class="hero-right-inner">
+                    <i class="fas fa-chart-line"></i>
+                    <p>99.99% uptime SLA · 50+ edge locations</p>
+                    <a href="404.html" class="btn-outline" style="margin-top: 1.2rem; display: inline-block;">Get started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MARQUEE SECTION -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <span style="font-weight: 700; color:#0066cc;"><i class="fab fa-aws"></i> AWS Partner</span>
+            <span style="font-weight: 700;"><i class="fab fa-google"></i> Google Cloud</span>
+            <span style="font-weight: 700;"><i class="fab fa-microsoft"></i> Microsoft Azure</span>
+            <span style="font-weight: 700;"><i class="fas fa-cloud"></i> Cloudflare</span>
+            <span style="font-weight: 700;"><i class="fas fa-shield-alt"></i> SOC2 Type II</span>
+            <span style="font-weight: 700;"><i class="fab fa-aws"></i> AWS Partner</span>
+            <span style="font-weight: 700;"><i class="fab fa-google"></i> Google Cloud</span>
+            <span style="font-weight: 700;"><i class="fab fa-microsoft"></i> Microsoft Azure</span>
+        </div>
+    </div>
+
+    <!-- 3. CORE SOLUTIONS (6 cards) -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate">Core solutions</h2>
+        <div class="grid-3">
+            <div class="service-card scroll-animate"><i class="fas fa-bolt"></i><h3>Ultra-low latency</h3><p>Sub-10ms routes across all continents with global backbone.</p><a href="404.html" class="btn-ghost" style="margin-top: 1.5rem;">Explore →</a></div>
+            <div class="service-card scroll-animate"><i class="fas fa-database"></i><h3>Geo‑redundant storage</h3><p>Distributed object storage with 11x9 durability and automatic replication.</p><a href="404.html" class="btn-ghost" style="margin-top: 1.5rem;">Learn →</a></div>
+            <div class="service-card scroll-animate"><i class="fas fa-robot"></i><h3>AI Security Fabric</h3><p>Real-time threat detection & auto‑remediation powered by learning.</p><a href="404.html" class="btn-ghost" style="margin-top: 1.5rem;">Discover →</a></div>
+            <div class="service-card scroll-animate"><i class="fas fa-cloud-upload-alt"></i><h3>Cloud Migration</h3><p>Seamless lift-and-shift or re-architecture with zero downtime.</p><a href="404.html" class="btn-ghost" style="margin-top: 1.5rem;">Start →</a></div>
+            <div class="service-card scroll-animate"><i class="fas fa-chart-line"></i><h3>Real-time Analytics</h3><p>Stream processing and insights at petabyte scale.</p><a href="404.html" class="btn-ghost" style="margin-top: 1.5rem;">Analyze →</a></div>
+            <div class="service-card scroll-animate"><i class="fas fa-network-wired"></i><h3>SD-WAN Solutions</h3><p>Software-defined networking for hybrid cloud environments.</p><a href="404.html" class="btn-ghost" style="margin-top: 1.5rem;">Connect →</a></div>
+        </div>
+    </div>
+
+    <!-- 4. TWO COLUMN with IMAGE -->
+    <div class="container">
+        <div class="grid-2" style="align-items: center;">
+            <div class="scroll-animate">
+                <img src="is4.webp" alt="team collaboration" style="width:100%; border-radius: 48px;">
+            </div>
+            <div class="scroll-animate-right" style="background: white; border-radius: 32px; padding: 2.5rem; box-shadow: 0 20px 30px -10px rgba(0,0,0,0.05);">
+                <i class="fas fa-quote-right" style="font-size: 2rem; color:#0066cc; opacity:0.5;"></i>
+                <p style="font-size: 1.2rem; font-style: italic; margin: 1rem 0;">"Stackly's global network reduced our latency by 60%. Game changer for our business."</p>
+                <p style="font-weight: 700;">— Sarah Johnson, CTO at NexGen AI</p>
+                <a href="404.html" class="btn-ghost" style="margin-top: 1.5rem;">Read case study</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. STATS with auto-updating numbers -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate-up">Powered by numbers</h2>
+        <div class="stats-grid">
+            <div class="scroll-animate-up"><span id="stat1" class="stat-number">400</span><span class="stat-suffix">+</span><p>Gbps network capacity</p></div>
+            <div class="scroll-animate-up"><span id="stat2" class="stat-number">27</span><p>global POPs</p></div>
+            <div class="scroll-animate-up"><span id="stat3" class="stat-number">99.99</span><span class="stat-suffix">%</span><p>uptime historical</p></div>
+            <div class="scroll-animate-up"><span id="stat4" class="stat-number">150</span><span class="stat-suffix">ms</span><p>avg response time</p></div>
+        </div>
+    </div>
+
+    <!-- 6. ADVANCED CAPABILITIES (images instead of icons) -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate-right">Advanced capabilities</h2>
+        <div class="grid-4">
+            <div class="service-card scroll-animate"><img src="is5.webp" alt="DDoS Protection"><h3>DDoS Mitigation</h3><p>2Tbps protection with auto-scrubbing centers worldwide.</p><a href="404.html" class="btn-outline" style="margin-top: 1rem;">Protect now</a></div>
+            <div class="service-card scroll-animate"><img src="is6.webp" alt="CI/CD Pipeline"><h3>CI/CD Pipelines</h3><p>Integrated GitOps and automated deployment workflows.</p><a href="404.html" class="btn-outline" style="margin-top: 1rem;">Automate</a></div>
+            <div class="service-card scroll-animate"><img src="is7.webp" alt="Managed Databases"><h3>Managed Databases</h3><p>MySQL, PostgreSQL, Redis with automated backups.</p><a href="404.html" class="btn-outline" style="margin-top: 1rem;">Deploy</a></div>
+            <div class="service-card scroll-animate"><img src="is8.webp" alt="Edge Computing"><h3>Edge <br> Computing</h3><p>Run serverless functions at the edge, near users.</p><a href="404.html" class="btn-outline" style="margin-top: 1rem;">Explore</a></div>
+        </div>
+    </div>
+
+    <!-- 7. ZIGZAG LAYOUT -->
+    <div class="zigzag-bg">
+        <div class="zigzag-wrapper">
+            <h2 class="section-heading scroll-animate">Infrastructure at the edge</h2>
+            <div class="zigzag-item">
+                <div class="grid-2">
+                    <div class="scroll-animate"><i class="fas fa-charging-station zigzag-icon"></i><h3>Edge computing nodes</h3><p>Deploy workloads closer to users with our global edge network spanning 50+ locations.</p><a href="404.html" class="btn-outline" style="margin-top: 1rem;">Deploy now</a></div>
+                    <div class="scroll-animate-right"><img src="is11.webp" alt="edge nodes" style="width:100%; border-radius: 32px;"></div>
+                </div>
+                <div class="grid-2">
+                    <div class="scroll-animate"><img src="is12.webp" alt="kubernetes" style="width:100%; border-radius: 32px;"></div>
+                    <div class="scroll-animate-right"><i class="fas fa-cubes zigzag-icon"></i><h3>Bare metal + Kubernetes</h3><p>High-performance dedicated servers with managed K8s clusters and autoscaling.</p><a href="404.html" class="btn-primary">Explore plans</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. VIDEO SPOTLIGHT -->
+    <div class="video-spotlight">
+        <video autoplay loop muted playsinline>
+            <source src="isv1.mp4" type="video/mp4">
+        </video>
+        <div class="video-spotlight-content">
+            <h2 class="section-heading" style="color:white;">See our infrastructure in motion</h2>
+            <a href="404.html" class="btn-round" style="background: white; color: black; margin-top: 1rem; display: inline-block;">Watch demo →</a>
+        </div>
+    </div>
+
+    <!-- 9. PRICING CARDS -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate-up">Simple, transparent pricing</h2>
+        <div class="grid-3">
+            <div class="service-card pricing-card-startup scroll-animate">
+                <p><strong>Startup</strong></p>
+                <div style="font-size: 2.5rem; font-weight: 800;">$19<span style="font-size: 1rem;">/mo</span></div>
+                <hr style="margin: 1rem 0;">
+                <p>✓ 50GB SSD</p><p>✓ 2TB bandwidth</p><p>✓ Free SSL</p>
+                <a href="404.html" class="btn-outline" style="margin-top: 1.5rem;">Choose plan</a>
+            </div>
+            <div class="service-card pricing-card-business scroll-animate">
+                <p><strong style="color:white;">Business</strong></p>
+                <div style="font-size: 2.8rem; font-weight: 800; color:white;">$49<span style="font-size: 1rem; color:white;">/mo</span></div>
+                <hr style="margin: 1rem 0;">
+                <p style="color:white;">✓ 200GB SSD</p><p style="color:white;">✓ 10TB bandwidth</p><p style="color:white;">✓ Priority support</p>
+                <a href="404.html" class="btn-light" style="margin-top: 1.5rem; background: white; color:#0066cc; font-weight:700;">Get started</a>
+            </div>
+            <div class="service-card pricing-card-enterprise scroll-animate">
+                <p><strong>Enterprise</strong></p>
+                <div style="font-size: 2rem; font-weight: 800;">Custom</div>
+                <hr style="margin: 1rem 0;">
+                <p>✓ Dedicated environment</p><p>✓ 24/7 SLA</p><p>✓ Tailored onboarding</p>
+                <a href="404.html" class="btn-outline" style="margin-top: 1.5rem;">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. TESTIMONIALS GRID -->
+    <div class="testimonials-section">
+        <div class="testimonials-wrapper">
+            <h2 class="section-heading scroll-animate-right" style="color: white;">Trusted by innovators</h2>
+            <div class="grid-3">
+                <div class="testimonial-card scroll-animate">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="testimonial-text">"Stackly's global backbone is unmatched. Migration was seamless."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar"><i class="fas fa-user"></i></div>
+                        <div><p class="author-name">Rahul Gupta</p><p class="author-title">CTO, TechFlow</p></div>
+                    </div>
+                    <a href="404.html" class="btn-outline testimonial-btn btn-white-outline">Read full review →</a>
+                </div>
+                <div class="testimonial-highlight scroll-animate">
+                    <i class="fas fa-quote-right" style="color: rgba(255,255,255,0.2); font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <p style="color: white; font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">"The edge computing platform reduced our latency by 75%. Incredible support team."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar avatar-white"><i class="fas fa-user" style="color:#0066cc;"></i></div>
+                        <div><p class="author-name">Mei Chen</p><p class="author-title" style="color:#ccd6f6;">VP Engineering, DataCore</p></div>
+                    </div>
+                    <a href="404.html" class="btn-light testimonial-btn" style="background: white; color:#0066cc;">Learn more →</a>
+                </div>
+                <div class="testimonial-card scroll-animate">
+                    <div class="icon-box"><i class="fas fa-building"></i></div>
+                    <p class="testimonial-text">"Stackly helped us achieve compliance and scale globally within weeks."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar"><i class="fas fa-user"></i></div>
+                        <div><p class="author-name">Lisa Williams</p><p class="author-title">CEO, CloudScale Inc</p></div>
+                    </div>
+                    <a href="404.html" class="btn-outline testimonial-btn btn-white-outline">Read case study →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. FAQ ACCORDION -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate">Got questions? We've got answers.</h2>
+        <details class="scroll-animate-up"><summary>How fast is your global network?</summary><p style="margin-top: 0.8rem;">Average latency under 30ms between major regions, with sub-10ms routes within North America and Europe.</p></details>
+        <details class="scroll-animate-up"><summary>Do you offer DDoS protection?</summary><p>Yes, all plans include enterprise-grade mitigation up to 2Tbps with automatic traffic scrubbing.</p></details>
+        <details class="scroll-animate-up"><summary>Can I scale from shared hosting to bare metal?</summary><p>Absolutely. Seamless upgrades with zero downtime and automated migration tools.</p></details>
+        <details class="scroll-animate-up"><summary>What compliance certifications do you have?</summary><p>We are SOC2 Type II, ISO 27001, GDPR compliant, and HIPAA-ready.</p></details>
+        <a href="404.html" class="btn-primary" style="margin-top: 2rem; display: inline-block;">View full knowledge base</a>
+    </div>
+
+    <!-- 12. DATA CENTER GALLERY -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate-right">Global data centers</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item scroll-animate"><img src="is15.webp" alt="Server room"><p>North America Hub</p></div>
+            <div class="gallery-item scroll-animate"><img src="is14.webp" alt="Data center racks"><p>Europe Region</p></div>
+            <div class="gallery-item scroll-animate"><img src="is13.webp" alt="Cooling system"><p>Asia Pacific</p></div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;"><a href="404.html" class="btn-dark">Explore all 50+ locations →</a></div>
+    </div>
+
+    <!-- 13. NEWSLETTER -->
+    <div class="newsletter-section">
+        <div class="newsletter-wrapper">
+            <h2 class="section-heading" style="color:white;">Deploy anywhere, instantly</h2>
+            <p>Subscribe for infrastructure updates & early access to new regions.</p>
+            <div class="newsletter-form">
+                <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="Your work email">
+                <button id="subscribeBtn" class="btn-primary" style="background: white; color:#0066cc; border:none;">Notify me</button>
+            </div>
+            <p id="emailError" style="color:#ff9999; font-size:0.8rem; margin-top:0.5rem; display:none;">Please enter a valid email address (e.g., name@company.com)</p>
+        </div>
+    </div>
+
+    <!-- 14. FEATURE STRIP -->
+    <div class="container">
+        <h2 class="section-heading scroll-animate">Why choose Stackly</h2>
+        <div class="feature-strip">
+            <div class="feature-item scroll-animate-up"><i class="fas fa-headset"></i> 24/7 on-call engineers</div>
+            <div class="feature-item scroll-animate-up"><i class="fas fa-bolt"></i> 99.999% power SLA</div>
+            <div class="feature-item scroll-animate-up"><i class="fas fa-undo-alt"></i> 30-day money back</div>
+            <div class="feature-item scroll-animate-up"><i class="fas fa-truck"></i> Free migration</div>
+            <div class="feature-item scroll-animate-up"><i class="fas fa-lock"></i> Enterprise-grade security</div>
+            <div class="feature-item scroll-animate-up"><i class="fas fa-globe"></i> 50+ global locations</div>
+        </div>
+    </div>
+
+    <!-- 15. FINAL CTA -->
+    <div class="final-cta">
+        <div class="final-cta-wrapper">
+            <h2 class="section-heading" style="color:white;">Ready to build the future?<br>Let's connect.</h2>
+            <p>Join 4,500+ businesses already scaling with Stackly.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="404.html" class="btn-primary"><i class="fas fa-rocket"></i> Start free trial</a>
+                <a href="404.html" class="btn-round btn-transparent">Contact sales</a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.8rem; color: #8b9bb0;">No credit card required · Cancel anytime · 24/7 support</p>
+        </div>
+    </div>
+</main>
+
+<!-- Back to Top Button HTML -->
+<a href="#" class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></a>
+
+<!-- FOOTER PLACEHOLDER -->
+<div id="footer-placeholder"></div>
+
+<script>
+
+    // ===== HEADER & FOOTER LOADER =====
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        function setBodyPadding() {
+            const header = document.querySelector('.internet-header, header');
+            if (header) {
+                const headerHeight = header.offsetHeight;
+                document.body.style.paddingTop = headerHeight + 'px';
+            } else {
+                document.body.style.paddingTop = '0px';
+            }
+        }
+
+        // Load Header
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Header file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setBodyPadding();
+                initHamburgerMenu();
+                initScrollEffect();
+                
+                window.addEventListener('resize', function() {
+                    setBodyPadding();
+                });
+            })
+            .catch(error => {
+                console.warn('Header could not be loaded:', error);
+                document.getElementById('header-placeholder').innerHTML = 
+                    '<div style="background:#ffffff; color:#1a2c3e; padding:1rem; text-align:center; position:fixed; top:0; width:100%; z-index:10000; box-shadow:0 2px 10px rgba(0,0,0,0.1);">⚠️ Header Not Found - Check header.html file</div>';
+                setBodyPadding();
+            });
+
+        // Load Footer
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Footer file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.warn('Footer could not be loaded:', error);
+                document.getElementById('footer-placeholder').innerHTML = 
+                    '<div style="background:#0a192f; color:#ccd6f6; padding:2rem; text-align:center;">⚠️ Footer Not Found - Check footer.html file</div>';
+            });
+
+        function initHamburgerMenu() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const fullscreenMenu = document.getElementById('fullscreenMenu');
+            const closeBtn = document.getElementById('closeMenuBtn');
+            
+            if (!hamburger || !fullscreenMenu) return;
+            
+            function openMenu() {
+                fullscreenMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeMenu() {
+                fullscreenMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                openMenu();
+            });
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    closeMenu();
+                });
+            }
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && fullscreenMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+            
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-actions a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMenu();
+                });
+            });
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 1000 && fullscreenMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        }
+        
+        function initScrollEffect() {
+            const header = document.querySelector('.internet-header');
+            if (!header) return;
+            
+            function handleScroll() {
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
+        }
+    });
+
+    //============================================================
+    // Intersection Observer for scroll animations
+    const animatedElements = document.querySelectorAll('.scroll-animate, .scroll-animate-right, .scroll-animate-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Auto-updating stats
+    const targets = [
+        { element: 'stat1', values: [400, 420, 445, 468, 490, 510], suffix: '' },
+        { element: 'stat2', values: [27, 29, 31, 33, 35, 38], suffix: '' },
+        { element: 'stat3', values: [99.99, 99.99, 99.99, 99.99, 99.99, 99.99], suffix: '%' },
+        { element: 'stat4', values: [150, 142, 138, 135, 132, 128], suffix: 'ms' }
+    ];
+    let idx = 0;
+    setInterval(() => {
+        idx = (idx + 1) % targets[0].values.length;
+        targets.forEach(t => {
+            const el = document.getElementById(t.element);
+            if (el) el.innerText = t.values[idx];
+        });
+    }, 2200);
+
+    // Email validation for newsletter
+    const subscribeBtn = document.getElementById('subscribeBtn');
+    const emailInput = document.getElementById('newsletterEmail');
+    const errorMsg = document.getElementById('emailError');
+    function isValidEmail(email) {
+        return /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email);
+    }
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', function(e) {
+            const email = emailInput.value.trim();
+            if (!isValidEmail(email)) {
+                e.preventDefault();
+                errorMsg.style.display = 'block';
+            } else {
+                errorMsg.style.display = 'none';
+                window.location.href = '404.html';
+            }
+        });
+    }
+
+    // Back to Top Button JavaScript
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backTop.classList.add('show');
+    } else {
+        backTop.classList.remove('show');
+    }
+});
+backTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>

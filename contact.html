@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Contact Us · Internet Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+            background: #f0f4f8;
+            overflow-x: hidden;
+            width: 100%;
+            padding-top: 0 !important;
+        }
+
+        .contact-wrap {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        section {
+            margin: 80px 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Section Headers */
+        .section-head {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-head .tag {
+            display: inline-block;
+            background: rgba(0,102,204,0.1);
+            color: #0066cc;
+            padding: 5px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .section-head h2 {
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 800;
+            color: #1a2c3e;
+        }
+        .section-head h2 span {
+            color: #0066cc;
+        }
+        .section-head p {
+            color: #4a627a;
+            margin-top: 12px;
+            font-size: clamp(14px, 4vw, 16px);
+        }
+
+        /* Animations */
+        [data-aos="fade-up"] {
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        [data-aos="fade-left"] {
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        [data-aos="fade-right"] {
+            transform: translateX(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        [data-aos="zoom-in"] {
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.7s cubic-bezier(0.34, 1.2, 0.64, 1);
+        }
+        [data-aos="flip-up"] {
+            transform: perspective(600px) rotateX(20deg);
+            opacity: 0;
+            transition: all 0.7s ease;
+        }
+        [data-aos].aos-animate {
+            transform: translate(0) scale(1) rotateX(0);
+            opacity: 1;
+        }
+
+        /* Buttons - Internet Site Theme */
+        .btn-primary, .btn-outline {
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.25s;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 50px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0066cc, #004099);
+            padding: 14px 32px;
+            color: white;
+            font-weight: 700;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,102,204,0.25);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0080ff, #0055cc);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,102,204,0.35);
+            color: white;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #0066cc;
+            padding: 12px 28px;
+            color: #0066cc;
+            font-weight: 600;
+        }
+        .btn-outline:hover {
+            background: #0066cc;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Back to Top */
+        .back-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #0066cc;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            border: 2px solid #0066cc;
+            text-decoration: none;
+        }
+        .back-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-top:hover {
+            background: #004099;
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* SECTION 1: HERO - Internet Site Themed */
+        .hero-contact {
+            min-height: 50vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 48px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a2540, #0d3b5e);
+            margin-top: 120px;
+        }
+        .hero-contact-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, rgba(10,37,64,0.4), rgba(10,37,64,0.85));
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 60px 20px;
+            color: white;
+            width: 100%;
+        }
+        .hero-content h1 {
+            font-size: clamp(36px, 6vw, 58px);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 span { color: #0066cc; }
+        .hero-content p {
+            font-size: clamp(14px, 4vw, 18px);
+            margin-top: 15px;
+        }
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            flex-wrap: wrap;
+        }
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .breadcrumb a:hover { color: #0066cc; }
+        .breadcrumb span { color: #0066cc; }
+
+        /* SECTION 2: Contact Form + Info - Main Section */
+        .contact-main {
+            background: white;
+            border-radius: 48px;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.08);
+            padding: 50px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        /* Contact Info Cards - Internet Site Theme */
+        .info-card {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 24px;
+            transition: all 0.3s;
+        }
+        .info-card:hover {
+            transform: translateX(8px);
+            background: #eef2f6;
+        }
+        .info-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(0,102,204,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #0066cc;
+            flex-shrink: 0;
+        }
+        .info-text h4 {
+            font-size: 18px;
+            color: #1a2c3e;
+            margin-bottom: 5px;
+        }
+        .info-text p {
+            color: #4a627a;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: #eef2f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0066cc;
+            font-size: 18px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            background: #0066cc;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e6ed;
+            border-radius: 60px;
+            font-family: inherit;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: white;
+        }
+        .form-group textarea {
+            border-radius: 30px;
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+        .form-group input.error, .form-group textarea.error {
+            border-color: #e65f5f;
+        }
+        .error-message {
+            color: #e65f5f;
+            font-size: 12px;
+            margin-top: 5px;
+            margin-left: 15px;
+            display: block;
+            min-height: 20px;
+        }
+
+        /* SECTION 3: Map */
+        .map-section {
+            margin: 60px 0;
+        }
+        .map-container {
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            height: 400px;
+            width: 100%;
+            border: 1px solid #e0e6ed;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* SECTION 4: FAQ Accordion - Internet Site Theme */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,102,204,0.1);
+        }
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: #1a2c3e;
+            background: white;
+            transition: background 0.3s;
+        }
+        .faq-question:hover { background: #f0f4f8; }
+        .faq-answer {
+            padding: 0 25px 20px;
+            display: none;
+            color: #4a627a;
+            border-top: 1px solid #e0e6ed;
+            line-height: 1.6;
+        }
+
+        /* SECTION 5: CTA - Internet Site Theme */
+        .cta-contact {
+            background: linear-gradient(135deg, #0a2540, #0d3b5e);
+            border-radius: 48px;
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-main {
+                padding: 35px;
+                margin-top: -40px;
+            }
+        }
+        @media (max-width: 768px) {
+            .contact-wrap {
+                padding: 0 16px;
+            }
+            section {
+                margin: 60px 0;
+            }
+            .hero-contact {
+                min-height: 40vh;
+                border-radius: 32px;
+                margin-top: 100px;
+            }
+            .hero-content {
+                padding: 40px 15px;
+            }
+            .contact-main {
+                padding: 25px;
+                margin-top: -30px;
+                border-radius: 32px;
+            }
+            .info-card {
+                padding: 15px;
+                gap: 15px;
+            }
+            .info-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+            .map-container {
+                height: 280px;
+            }
+            .cta-contact {
+                padding: 40px 25px;
+                border-radius: 32px;
+            }
+            .btn-primary, .btn-outline {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+        @media (max-width: 480px) {
+            .contact-main {
+                padding: 20px;
+            }
+            .info-card {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .form-group input, .form-group textarea {
+                padding: 12px 18px;
+                font-size: 14px;
+            }
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            .map-container {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER PLACEHOLDER -->
+<div id="header-placeholder"></div>
+
+<div class="contact-wrap">
+
+    <!-- SECTION 1: HERO -->
+    <section class="hero-contact" data-aos="zoom-in">
+        <img class="hero-contact-bg" src="is1.webp" alt="Internet Technology">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="breadcrumb" data-aos="fade-down">
+                <a href="home.html"><i class="fas fa-home"></i> Home</a>
+                <span>/</span>
+                <span style="color: #0066cc;">Contact Us</span>
+            </div>
+            <h1>Get in <span>Touch</span><br>With Our Internet Experts</h1>
+            <p>We're here to answer your questions about web hosting, cloud solutions, cyber security, and internet services.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Contact Form + Information -->
+    <div class="contact-main" data-aos="flip-up">
+        <div class="contact-grid">
+            <!-- Left: Contact Information -->
+            <div>
+                <h2 style="font-size: clamp(28px, 4vw, 36px); color: #1a2c3e; margin-bottom: 25px;">Contact <span style="color: #0066cc;">Information</span></h2>
+                
+                <div class="info-card" data-aos="fade-right">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-text">
+                        <h4>Head Office</h4>
+                        <p>123 Internet Boulevard<br>Silicon Valley, CA 94025, USA</p>
+                    </div>
+                </div>
+
+                <div class="info-card" data-aos="fade-right" data-aos-delay="50">
+                    <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="info-text">
+                        <h4>Phone Number</h4>
+                        <p>+1 (888) 555-1234<br>+1 (415) 555-9800</p>
+                    </div>
+                </div>
+
+                <div class="info-card" data-aos="fade-right" data-aos-delay="100">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-text">
+                        <h4>Email Address</h4>
+                        <p>hello@internetsite.com<br>support@internetsite.com</p>
+                    </div>
+                </div>
+
+                <div class="info-card" data-aos="fade-right" data-aos-delay="150">
+                    <div class="info-icon"><i class="fas fa-clock"></i></div>
+                    <div class="info-text">
+                        <h4>Office Hours</h4>
+                        <p>Monday – Friday: 8:00 AM – 6:00 PM<br>Saturday: 9:00 AM – 2:00 PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="404.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Right: Contact Form with Full Validation -->
+            <div>
+                <h2 style="font-size: clamp(28px, 4vw, 36px); color: #1a2c3e; margin-bottom: 25px;">Send us a <span style="color: #0066cc;">Message</span></h2>
+                <form id="contactForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <input type="text" id="fullName" placeholder="Your Full Name *" 
+                               onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode === 32"
+                               onpaste="return false" ondrop="return false">
+                        <span id="nameError" class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="emailAddress" placeholder="Email Address *">
+                        <span id="emailError" class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="phoneNumber" placeholder="Phone Number (Optional)">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Your Message *"></textarea>
+                        <span id="messageError" class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn-primary" style="width: 100%;" onclick="validateContactForm()">Send Message →</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: Google Map -->
+    <div class="map-section" data-aos="zoom-in">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086537302512!2d-122.4214!3d37.7749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5c3f3f3f%3A0x4f3f3f3f3f3f3f3f!2sMission%20Bay%2C%20San%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- SECTION 4: FAQ Accordion -->
+    <section data-aos="fade-up">
+        <div class="section-head">
+            <div class="tag">❓ FREQUENTLY ASKED</div>
+            <h2>Common <span>Questions</span></h2>
+            <p>Find quick answers to your queries about our internet services</p>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>🌐 How does your web hosting work?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">We provide high-performance SSD hosting with 99.99% uptime, free SSL certificates, and 24/7 expert support for all your website needs.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>☁️ What cloud solutions do you offer?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">We offer scalable cloud hosting, cloud storage, managed databases, and global CDN services across 50+ edge locations worldwide.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>🔒 How secure is your cyber security?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">Our AI-powered security platform provides real-time threat detection, DDoS protection, and 24/7 SOC monitoring for complete protection.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>💰 Is there a free trial available?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">Yes! We offer a 14-day free trial with full access to all our web hosting and cloud services. No credit card required.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CTA -->
+    <section class="cta-contact" data-aos="zoom-in">
+        <h2 style="font-size: clamp(32px, 5vw, 42px);">Ready to Get Started?</h2>
+        <p style="margin: 20px 0; font-size: clamp(14px, 4vw, 18px);">Join 50,000+ businesses already using our internet services</p>
+        <div>
+            <a href="404.html" class="btn-primary" style="background: white; color: #0066cc; margin-right: 15px;">Start Free Trial</a>
+            <a href="404.html" class="btn-outline" style="border-color: white; color: white;">Schedule Demo</a>
+        </div>
+    </section>
+</div>
+
+<a href="#" class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></a>
+
+<!-- FOOTER PLACEHOLDER -->
+<div id="footer-placeholder"></div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // ===== HEADER & FOOTER LOADER =====
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        function setBodyPadding() {
+            const header = document.querySelector('.internet-header, header');
+            if (header) {
+                const headerHeight = header.offsetHeight;
+                document.body.style.paddingTop = headerHeight + 'px';
+            } else {
+                document.body.style.paddingTop = '0px';
+            }
+        }
+
+        // Load Header
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Header file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setBodyPadding();
+                initHamburgerMenu();
+                initScrollEffect();
+                
+                window.addEventListener('resize', function() {
+                    setBodyPadding();
+                });
+            })
+            .catch(error => {
+                console.warn('Header could not be loaded:', error);
+                document.getElementById('header-placeholder').innerHTML = 
+                    '<div style="background:#ffffff; color:#1a2c3e; padding:1rem; text-align:center; position:fixed; top:0; width:100%; z-index:10000; box-shadow:0 2px 10px rgba(0,0,0,0.1);">⚠️ Header Not Found - Check header.html file</div>';
+                setBodyPadding();
+            });
+
+        // Load Footer
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Footer file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.warn('Footer could not be loaded:', error);
+                document.getElementById('footer-placeholder').innerHTML = 
+                    '<div style="background:#0a192f; color:#ccd6f6; padding:2rem; text-align:center;">⚠️ Footer Not Found - Check footer.html file</div>';
+            });
+
+        function initHamburgerMenu() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const fullscreenMenu = document.getElementById('fullscreenMenu');
+            const closeBtn = document.getElementById('closeMenuBtn');
+            
+            if (!hamburger || !fullscreenMenu) return;
+            
+            function openMenu() {
+                fullscreenMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeMenu() {
+                fullscreenMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                openMenu();
+            });
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    closeMenu();
+                });
+            }
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && fullscreenMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+            
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a, .mobile-actions a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMenu();
+                });
+            });
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 1000 && fullscreenMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        }
+        
+        function initScrollEffect() {
+            const header = document.querySelector('.internet-header');
+            if (!header) return;
+            
+            function handleScroll() {
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
+        }
+    });
+
+    // AOS Initialization
+    AOS.init({
+        duration: 800,
+        once: false,
+        mirror: true,
+        offset: 50,
+        easing: 'ease-out-cubic'
+    });
+
+    // Back to Top
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backTop.classList.add('show');
+        } else {
+            backTop.classList.remove('show');
+        }
+    });
+    backTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Form Validation
+    window.validateContactForm = function() {
+        const name = document.getElementById('fullName');
+        const email = document.getElementById('emailAddress');
+        const message = document.getElementById('message');
+        
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const messageError = document.getElementById('messageError');
+        
+        let isValid = true;
+
+        const nameRegex = /^[A-Za-z\s]+$/;
+        if (!name.value.trim()) {
+            nameError.textContent = 'Name is required';
+            name.classList.add('error');
+            isValid = false;
+        } else if (!nameRegex.test(name.value)) {
+            nameError.textContent = 'Name can only contain letters and spaces';
+            name.classList.add('error');
+            isValid = false;
+        } else {
+            nameError.textContent = '';
+            name.classList.remove('error');
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.value.trim()) {
+            emailError.textContent = 'Email is required';
+            email.classList.add('error');
+            isValid = false;
+        } else if (!emailRegex.test(email.value)) {
+            emailError.textContent = 'Please enter a valid email address';
+            email.classList.add('error');
+            isValid = false;
+        } else {
+            emailError.textContent = '';
+            email.classList.remove('error');
+        }
+
+        if (!message.value.trim()) {
+            messageError.textContent = 'Message is required';
+            message.classList.add('error');
+            isValid = false;
+        } else {
+            messageError.textContent = '';
+            message.classList.remove('error');
+        }
+
+        if (isValid) {
+            window.location.href = '404.html';
+        }
+    };
+
+    // Real-time validation for name field
+    const nameField = document.getElementById('fullName');
+    if (nameField) {
+        nameField.addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+        });
+    }
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const icon = question.querySelector('i');
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                answer.style.display = 'block';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+</script>
+</body>
+</html>
